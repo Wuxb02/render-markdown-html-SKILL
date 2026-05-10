@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editorial Split View — Markdown / HTML</title>
+<style>
+  :root {
+    --ivory: #FAF9F5;
+    --slate: #141413;
+    --clay: #D97757;
+    --oat: #E3DACC;
+    --olive: #788C5D;
+    --gray-150: #F0EEE6;
+    --gray-300: #D1CFC5;
+    --gray-500: #87867F;
+    --gray-700: #3D3D3A;
+    --white: #FFFFFF;
+    --serif: ui-serif, Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 44px 24px 72px;
+    background: var(--ivory);
+    color: var(--gray-700);
+    font-family: var(--sans);
+  }
+  .wrap { max-width: 1220px; margin: 0 auto; }
+  h1 {
+    margin: 0 0 10px;
+    font-family: var(--serif);
+    font-size: 38px;
+    line-height: 1.08;
+    font-weight: 500;
+    color: var(--slate);
+  }
+  .sub { max-width: 720px; margin-bottom: 22px; }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .btn {
+    border: 1.5px solid var(--gray-300);
+    background: var(--white);
+    color: var(--gray-700);
+    border-radius: 999px;
+    padding: 8px 13px;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .btn.primary {
+    background: var(--slate);
+    border-color: var(--slate);
+    color: var(--ivory);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+  @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } }
+  .pane {
+    background: var(--white);
+    border: 1.5px solid var(--gray-300);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .pane-head {
+    padding: 12px 16px;
+    border-bottom: 1.5px solid var(--gray-300);
+    background: var(--gray-150);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .pane-head strong {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+  .pane-head span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gray-500);
+  }
+  .pane-body { padding: 18px; }
+  .block {
+    border: 1.5px solid var(--gray-300);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 12px;
+    background: var(--ivory);
+  }
+  .block h2 {
+    margin: 0 0 8px;
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--slate);
+  }
+  .block p, .block li {
+    font-size: 14.5px;
+    color: var(--gray-700);
+  }
+  .controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .control {
+    border: 1px solid var(--gray-300);
+    border-radius: 10px;
+    padding: 12px;
+    background: var(--white);
+  }
+  .control label {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+  }
+  .writeback {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-left: 3px solid var(--olive);
+    background: rgba(120,140,93,.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Split View for Reading and Editing</h1>
+    <p class="sub">This pattern keeps Markdown on one side and the rendered HTML on the other, which makes comparison, editing, and recovery much easier during long-document work.</p>
+    <div class="toolbar">
+      <button class="btn primary">Sync HTML</button>
+      <button class="btn">Write Back</button>
+      <button class="btn">Export Markdown</button>
+      <button class="btn">Export HTML</button>
+    </div>
+
+    <div class="grid">
+      <section class="pane">
+        <div class="pane-head"><strong>Markdown</strong><span>source</span></div>
+        <div class="pane-body">
+          <div class="block">
+            <h2>Source structure</h2>
+            <ul>
+              <li>Title hierarchy</li>
+              <li>Lists and tables</li>
+              <li>Parameter blocks</li>
+            </ul>
+          </div>
+          <div class="block">
+            <p>Use the Markdown side for truth, and let the HTML side handle presentation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pane">
+        <div class="pane-head"><strong>HTML</strong><span>preview</span></div>
+        <div class="pane-body">
+          <div class="controls">
+            <div class="control">
+              <label><span>Theme</span><span>Ivory</span></label>
+              <div>Low-contrast, editorial tone</div>
+            </div>
+            <div class="control">
+              <label><span>Density</span><span>Comfort</span></label>
+              <div>Readable spacing for long docs</div>
+            </div>
+          </div>
+          <div class="writeback">
+            <div><strong>Write-back button required</strong><br>Any adjustable parameter should have a clear return path to Markdown or structured content.</div>
+            <button class="btn primary">Write Back</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
+

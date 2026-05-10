@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configurable Card — HTML Write-back Pattern</title>
+<style>
+  :root {
+    --ivory: #FAF9F5;
+    --slate: #141413;
+    --clay: #D97757;
+    --oat: #E3DACC;
+    --olive: #788C5D;
+    --gray-150: #F0EEE6;
+    --gray-300: #D1CFC5;
+    --gray-500: #87867F;
+    --gray-700: #3D3D3A;
+    --white: #FFFFFF;
+    --serif: ui-serif, Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 40px 22px 72px;
+    background: var(--ivory);
+    color: var(--gray-700);
+    font-family: var(--sans);
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  .top {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 20px;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .top { grid-template-columns: 1fr; } }
+  h1 {
+    font-family: var(--serif);
+    font-size: 34px;
+    line-height: 1.1;
+    font-weight: 500;
+    color: var(--slate);
+    margin: 0 0 10px;
+  }
+  .panel {
+    background: var(--white);
+    border: 1.5px solid var(--gray-300);
+    border-radius: 12px;
+  }
+  .intro { padding: 18px 20px; }
+  .controls { padding: 16px; position: sticky; top: 20px; }
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 6px;
+  }
+  input[type="range"] { width: 100%; }
+  .swatch-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-300);
+  }
+  .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    border-radius: 999px;
+    padding: 8px 13px;
+    border: 1.5px solid var(--gray-300);
+    background: var(--white);
+    color: var(--gray-700);
+  }
+  .btn.primary {
+    background: var(--slate);
+    border-color: var(--slate);
+    color: var(--ivory);
+  }
+  .card {
+    margin-top: 18px;
+    background: var(--white);
+    border: 1.5px solid var(--gray-300);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .card-head {
+    padding: 16px 18px;
+    border-bottom: 1.5px solid var(--gray-300);
+    background: var(--gray-150);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .card-head h2 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--slate);
+  }
+  .pill {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--oat);
+    color: var(--slate);
+    border-radius: 999px;
+    padding: 4px 8px;
+  }
+  .card-body { padding: 18px; }
+  .card-body p { margin: 0 0 10px; font-size: 15px; }
+  .writeback {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border: 1.5px dashed var(--clay);
+    border-radius: 10px;
+    background: rgba(217,119,87,.06);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .writeback strong { color: var(--slate); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <section class="panel intro">
+        <h1>Configurable Card With Explicit Write-Back</h1>
+        <p>This pattern is for HTML surfaces that expose editable parameters. It keeps the controls visible and pairs them with a dedicated write-back action.</p>
+        <div class="card">
+          <div class="card-head">
+            <h2>Theme preview</h2>
+            <span class="pill">editable</span>
+          </div>
+          <div class="card-body">
+            <p>The card can change accent tone, density, and label text without losing the original Markdown structure.</p>
+            <div class="writeback">
+              <div><strong>Write-back required</strong><br>Any changed parameter should expose a save path back to Markdown or structured data.</div>
+              <button class="btn primary">Write Back</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel controls">
+        <div class="field">
+          <label><span>Accent</span><span>Clay</span></label>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#D97757"></div>
+            <div class="swatch" style="background:#788C5D"></div>
+            <div class="swatch" style="background:#141413"></div>
+            <div class="swatch" style="background:#E3DACC"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label><span>Spacing</span><span>Comfortable</span></label>
+          <input type="range" min="0" max="100" value="65">
+        </div>
+        <div class="field">
+          <label><span>Density</span><span>Medium</span></label>
+          <input type="range" min="0" max="100" value="45">
+        </div>
+        <div class="actions">
+          <button class="btn primary">Apply</button>
+          <button class="btn">Reset</button>
+          <button class="btn">Write Back</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Document Review — Markdown to HTML</title>
+<style>
+  :root {
+    --ivory: #FAF9F5;
+    --slate: #141413;
+    --clay: #D97757;
+    --oat: #E3DACC;
+    --olive: #788C5D;
+    --gray-150: #F0EEE6;
+    --gray-300: #D1CFC5;
+    --gray-500: #87867F;
+    --gray-700: #3D3D3A;
+    --white: #FFFFFF;
+    --serif: ui-serif, Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 48px 24px 88px;
+    background: var(--ivory);
+    color: var(--gray-700);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 1140px; margin: 0 auto; }
+  .header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) 320px;
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 960px) { .header { grid-template-columns: 1fr; } }
+  h1 {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--slate);
+    margin: 0 0 14px;
+  }
+  .lead { font-size: 16px; max-width: 660px; }
+  .sidebar, .panel {
+    background: var(--white);
+    border: 1.5px solid var(--gray-300);
+    border-radius: 12px;
+  }
+  .sidebar { padding: 18px; position: sticky; top: 20px; }
+  .panel { padding: 18px 20px; }
+  .meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 10px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .stat {
+    background: var(--gray-150);
+    border: 1px solid var(--gray-300);
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .stat strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--slate);
+    margin-bottom: 4px;
+  }
+  .toc {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .toc li {
+    padding: 8px 0;
+    border-top: 1px solid var(--gray-150);
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .toc li:first-child { border-top: none; }
+  .toc a { color: var(--slate); text-decoration: none; }
+  .toc a:hover { color: var(--clay); }
+  section { margin-top: 28px; }
+  h2 {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    color: var(--slate);
+  }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .btn {
+    border: 1.5px solid var(--gray-300);
+    border-radius: 999px;
+    padding: 8px 14px;
+    background: var(--white);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gray-700);
+  }
+  .btn.primary {
+    background: var(--slate);
+    border-color: var(--slate);
+    color: var(--ivory);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+  @media (max-width: 780px) { .grid { grid-template-columns: 1fr; } }
+  .content {
+    border: 1.5px solid var(--gray-300);
+    border-radius: 12px;
+    background: var(--white);
+    padding: 20px;
+  }
+  .content p, .content li { font-size: 15px; color: var(--gray-700); }
+  .content ul { margin: 0; padding-left: 20px; }
+  .note {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--clay);
+    background: rgba(217,119,87,.06);
+    border-radius: 10px;
+    color: var(--gray-700);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div>
+        <div class="meta">Reference Example 01</div>
+        <h1>Document Review for Long Markdown Reports</h1>
+        <p class="lead">A calm editorial layout for turning dense Markdown into a readable HTML document with navigation, summary cards, and explicit export controls.</p>
+        <div class="toolbar">
+          <button class="btn primary">Export HTML</button>
+          <button class="btn">Write Back</button>
+          <button class="btn">Reset Theme</button>
+        </div>
+      </div>
+      <aside class="sidebar">
+        <div class="meta">At a glance</div>
+        <div class="stats">
+          <div class="stat"><strong>12</strong> sections</div>
+          <div class="stat"><strong>4</strong> controls</div>
+          <div class="stat"><strong>1</strong> click save</div>
+          <div class="stat"><strong>2</strong> formats</div>
+        </div>
+        <ul class="toc" style="margin-top:16px;">
+          <li><a href="#summary">Summary</a></li>
+          <li><a href="#findings">Findings</a></li>
+          <li><a href="#actions">Actions</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <section id="summary" class="grid">
+      <article class="content">
+        <h2>Summary</h2>
+        <p>Markdown should remain the source of truth for structure, while HTML handles presentation, scanning, and interaction.</p>
+      </article>
+      <article class="content">
+        <h2>Controls</h2>
+        <p>Any adjustable parameter should have a visible write-back button next to it, so editing never becomes a dead end.</p>
+      </article>
+    </section>
+
+    <section id="findings" class="content">
+      <h2>Findings</h2>
+      <ul>
+        <li>Keep headings semantic.</li>
+        <li>Preserve links, lists, tables, and code blocks.</li>
+        <li>Use a compact toolbar for export and recovery actions.</li>
+      </ul>
+    </section>
+
+    <section id="actions" class="note">
+      This example is intentionally plain so later HTML generation can borrow its spacing, hierarchy, and control placement without inheriting unnecessary styling noise.
+    </section>
+  </div>
+</body>
+</html>
+
