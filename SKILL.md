@@ -24,7 +24,8 @@ Turn Markdown into a readable HTML workspace when HTML is requested, or recover 
 3. Expose any editable setting as a visible control in HTML.
 4. If the HTML includes any parameter or configuration field, always add an explicit write-back button near that control group.
 5. Only chain HTML back to Markdown when the user asks for Markdown output or explicit recovery.
-6. Keep the page readable, scannable, and printable. Visual polish should support comprehension, not distract from it.
+6. Keep the output language consistent with the source content or the user's requested language. If the body is Chinese, translate interface labels, generated headings, buttons, navigation text, and placeholder copy into Chinese as well. For example, use `项目指南` instead of `Project Guide` in a Chinese document.
+7. Keep the page readable, scannable, and printable. Visual polish should support comprehension, not distract from it.
 
 ## Output targets
 
@@ -70,6 +71,7 @@ Use a calm, editorial interface rather than a flashy landing page. The visual la
 ## Practical guidance
 
 - When the source is Markdown, preserve its structure unless the user asks for a rewrite.
+- Match the generated UI language to the dominant language of the source. This includes document titles, section headings, table of contents labels, button text, form labels, status messages, and exported Markdown headings.
 - When the user says to make it editable, treat that as a request for an interactive HTML surface, not a static export.
 - When the user asks for HTML, do not generate Markdown unless they also asked for Markdown output.
 - When the user asks for Markdown, recover the meaning of the content rather than the visual styling and do not force an HTML detour.

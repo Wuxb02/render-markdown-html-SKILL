@@ -8,6 +8,7 @@
 - 将带参数的 HTML 做成可编辑页面
 - 为可配置项提供明确的 `Write Back` 按钮
 - 将 HTML 重新整理为 Markdown
+- 生成 HTML 或 Markdown 时保持语言风格一致，例如中文正文中的 `Project Guide` 应翻译为“项目指南”
 
 ## 什么时候用
 
@@ -27,4 +28,3 @@
 - `references/examples/01-document-review.html`
 - `references/examples/02-configurable-card.html`
 - `references/examples/03-editorial-split-view.html`
-

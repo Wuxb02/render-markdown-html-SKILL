@@ -8,6 +8,7 @@
 - Turns parameterized HTML into an editable page
 - Adds a clear `Write Back` button for configurable items
 - Restores HTML into Markdown when Markdown is requested
+- Keeps the output language consistent with the source, such as translating `Project Guide` to `项目指南` in a Chinese document
 
 ## When to use it
 
@@ -27,4 +28,3 @@
 - `references/examples/01-document-review.html`
 - `references/examples/02-configurable-card.html`
 - `references/examples/03-editorial-split-view.html`
-
